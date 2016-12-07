@@ -31,8 +31,6 @@ def calculate_walk(code,orientation):   #function that calculates total displace
 
 def decode(move,orientation):
     if move[0] == 'R':
-        orientation = Right_turn[orientation]
-        return (orientation, int(move[1:]))
+        return (Right_turn[orientation], int(move[1:]))
     if move[0] == 'L':
-        orientation = Left_turn[orientation]
-        return (orientation, int(move[1:]))
+        return (Left_turn[orientation], int(move[1:]))
