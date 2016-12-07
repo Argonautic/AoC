@@ -1,0 +1,38 @@
+puzzleinput = 'R3, L5, R2, L2, R1, L3, R1, R3, L4, R3, L1, L1, R1, L3, R2, L3, L2, R1, R1, L1, R4, L1, L4, R3, L2, \
+L2, R1, L1, R5, R4, R2, L5, L2, R5, R5, L2, R3, R1, R1, L3, R1, L4, L4, L190, L5, L2, R4, L5, R4, R5, L4, R1, R2, \
+L5, R50, L2, R1, R73, R1, L2, R191, R2, L4, R1, L5, L5, R5, L3, L5, L4, R4, R5, L4, R4, R4, R5, L2, L5, R3, L4, \
+L4, L5, R2, R2, R2, R4, L3, R4, R5, L3, R5, L2, R3, L1, R2, R2, L3, L1, R5, L3, L5, R2, R4, R1, L1, L5, R3, R2, \
+L3, L4, L5, L1, R3, L5, L2, R2, L3, L4, L1, R1, R4, R2, R2, R4, R2, R2, L3, L3, L4, R4, L4, L4, R1, L4, L4, R1, \
+L2, R5, R2, R3, R3, L2, L5, R3, L3, R5, L2, R3, R2, L4, L3, L1, R2, L2, L3, L5, R3, L1, L3, L4, L3'
+
+Right_turn = {'N':'E','E':'S','S':'W','W':'N'}
+Left_turn = {'N':'W','W':'S','S':'E','E':'N'}
+vvalues = {'N':1,'S':-1}
+hvalues = {'E':1,'W':-1}
+#N/S/E/W values based on cartesian coordinate graph
+
+def calculate_walk(code,orientation):   #function that calculates total displacement from origin
+    next_start = code.find(',')   #startpoint of the next movement code
+    current_move = None   #the next piece of code
+    hdistance = 0   #total east/west displacement
+    vdistance = 0   #total north/south displacement
+    code += ','
+    while next_start != -1:
+        current_move = code[0:next_start]   #get the snippet of code for the current move
+        instructions = decode(current_move,orientation)   #returns a tuple of the new orientation and blocks moved
+        orientation = instructions[0]
+        if orientation == 'N' or orientation == 'S':
+            vdistance += vvalues[orientation]*instructions[1]   #modifies N/S distance
+        if orientation == 'E' or orientation == 'W':
+            hdistance += hvalues[orientation]*instructions[1]   #modifies E/W distance
+        code = code[next_start+2:]   #starts the code at the next move to make
+        next_start = code.find(',')
+    return abs(hdistance) + abs(vdistance)
+
+def decode(move,orientation):
+    if move[0] == 'R':
+        orientation = Right_turn[orientation]
+        return (orientation, int(move[1:]))
+    if move[0] == 'L':
+        orientation = Left_turn[orientation]
+        return (orientation, int(move[1:]))
