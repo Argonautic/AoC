@@ -19,10 +19,10 @@ def get_password(input):
     placeholder = [2,0]
     for letter in input:
         if letter != ' ':
-            for value in range(2):
+            for i in range(2):
                 placeholder[0],placeholder[1] = position[0],position[1]
-                position[value] += actions[letter][value]
-                if position[0] > 4 or position[0] < 0 \  #can thjs be in a try block?
+                position[i] += actions[letter][i]
+                if position[0] > 4 or position[0] < 0 \ 
                 or position[1] > (len(keypad[position[0]]) - 1) \
                 or position[1] < 0 or keypad[position[0]][position[1]] == '':
                     position[0],position[1] = placeholder[0],placeholder[1]
