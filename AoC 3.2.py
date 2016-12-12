@@ -1,3 +1,4 @@
+#puzzle description here: https://adventofcode.com/2016/day/3
 #puzzleinput here: https://adventofcode.com/2016/day/3/input
 
 import re
