@@ -1,3 +1,5 @@
+#puzzleinput here: https://adventofcode.com/2016/day/3/input
+
 import re
 
 def triangle_count(triangle_text):
