@@ -17,7 +17,7 @@ def SSLcount(inpt): #main function. Blackboxed to be as understandable as possib
         nets = re.split('(\[\w+\])',IP) #to split IPs by supernet/hypernet sequences
         supernet_strings, hypernet_strings = categorize_nets(nets) #to gather all supernet & hypernet strings in respective lists
         supernet_ABAs,hypernet_ABAs = find_ABAs(supernet_strings),find_ABAs(hypernet_strings) #to find all ABA patterns
-        if supernet_ABAs and hypernet_ABAs and palindrome_exists(supernet_ABAs,hypernet_ABAs): #to see if any supernet ABA has a matching hyper BAB
+        if palindrome_exists(supernet_ABAs,hypernet_ABAs): #to see if any supernet ABA has a matching hyper BAB
             result += 1
     return(result)
 
