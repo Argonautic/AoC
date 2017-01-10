@@ -1,7 +1,8 @@
-"""take as an input a string of IP addresses seperated by lines. Returns as an output the number of IP addresses that
-support SSL. An IP addresses supports SSL if there is an ABA pattern within a supernet sequence (sequence not surrounded by brackets)
-and a matching BAB pattern within a hypernet sequence (sequence that is surrounded by brackets). BAB sequences are palindromes of
-ABA sequences, and within an ABA, the A character must be different from the B character."""
+"""For Advent of Code day 7, question 2. Take as an input a string of IP addresses seperated by lines. Returns as an output the 
+number of IP addresses that support SSL (different from real life SSL). An IP addresses supports SSL if there is an ABA pattern 
+within a supernet sequence (sequence not surrounded by brackets) and a matching BAB pattern within a hypernet sequence (sequence 
+that is surrounded by brackets). BAB sequences are palindromes of ABA sequences, and within an ABA, the A character must be 
+different from the B character."""
 
 import regex as re #regex allows for an overlapping findall where regular re doesn't
 
